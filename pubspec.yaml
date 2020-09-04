@@ -24,9 +24,25 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets\portfolio.jpg
+    - assets/portfolio.jpg
+    - assets/icons/github.png
+    - assets/icons/discord.png
+    - assets/icons/facebook.png
+    - assets/icons/instagram.png
+    - assets/icons/skype.png    
+    - assets/icons/linkedin.png
+    - assets/icons/twitter.png
+    - assets/icons/email.png
+    - assets/icons/telegram.jpg
 
   fonts:
+    - family: Roboto Mono
+      fonts:
+        - asset: fonts\RobotoMono-Regular.ttf
+        - asset: fonts\RobotoMono-Light.ttf
+          weight: 300
+        - asset: fonts\RobotoMono-Thin.ttf
+          weight: 100
     - family: Raleway
       fonts:
         - asset: fonts\Raleway-Bold.ttf

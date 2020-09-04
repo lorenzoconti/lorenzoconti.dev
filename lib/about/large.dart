@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lorenzoconti/head.dart';
+import 'package:lorenzoconti/config.dart';
+import 'package:lorenzoconti/widgets/head.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LargeAboutPage extends StatelessWidget {
@@ -9,8 +10,9 @@ class LargeAboutPage extends StatelessWidget {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Head(),
+          Head(about: false),
           _core(context),
           _aboutme(context),
           _aboutthings(context),
@@ -24,13 +26,16 @@ class LargeAboutPage extends StatelessWidget {
     var heigth = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Container(
-      //decoration: BoxDecoration(color: Color.fromRGBO(255, 0, 0, 1)),
-      padding:
-          EdgeInsets.symmetric(horizontal: width * 0.1, vertical: heigth * 0.1),
+      padding: EdgeInsets.symmetric(
+          horizontal: width * 0.08, vertical: heigth * 0.1),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_text(context), SizedBox(width: 20), _image(context)],
+        mainAxisAlignment: width > Config.widthLimit
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
+        crossAxisAlignment: width > Config.widthLimit
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
+        children: [_text(context), SizedBox(width: 10), _image(context)],
       ),
     );
   }
@@ -39,8 +44,9 @@ class LargeAboutPage extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Flexible(
       child: Container(
-          //decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 0, 1)),
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          padding: width > Config.widthLimit
+              ? EdgeInsets.symmetric(horizontal: width * 0.08, vertical: 10)
+              : EdgeInsets.zero,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +59,7 @@ class LargeAboutPage extends StatelessWidget {
               SizedBox(height: 15),
               Text(
                 "I'm a Computer Engineer,\nin love with" +
-                    (width > 1300 ? " Artifical Intelligence." : ' AI.'),
+                    (width > 1150 ? " Artifical Intelligence." : ' AI.'),
                 style: DefaultTextStyle.of(context).style.copyWith(
                     fontSize: 35, fontWeight: FontWeight.bold, height: 1.5),
               ),
@@ -67,7 +73,7 @@ class LargeAboutPage extends StatelessWidget {
                     children: [
                       TextSpan(text: ' @ ', style: TextStyle(fontSize: 20)),
                       TextSpan(
-                        text: width > 1300
+                        text: width > 1150
                             ? 'Università degli Studi di Bergamo.'
                             : 'Unibg',
                         style: DefaultTextStyle.of(context)
@@ -86,7 +92,6 @@ class LargeAboutPage extends StatelessWidget {
     var heigth = MediaQuery.of(context).size.height;
     return width > 1000
         ? Container(
-            //decoration: BoxDecoration(color: Color.fromRGBO(255, 0, 255, 1)),
             width: width * 0.30,
             height: heigth * 0.50,
             child: Image(
@@ -103,7 +108,7 @@ class LargeAboutPage extends StatelessWidget {
     var years = (date.difference(birthday).inHours ~/ 8760).toInt();
     return Container(
       width: width * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: 80),
+      padding: EdgeInsets.symmetric(horizontal: width * 0.08),
       margin: EdgeInsets.only(bottom: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -132,7 +137,7 @@ class LargeAboutPage extends StatelessWidget {
 
     return Container(
       width: width * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: 80),
+      padding: EdgeInsets.symmetric(horizontal: width * 0.08),
       margin: EdgeInsets.only(bottom: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -161,7 +166,7 @@ class LargeAboutPage extends StatelessWidget {
 
     return Container(
       width: width * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: 80),
+      padding: EdgeInsets.symmetric(horizontal: width * 0.08),
       margin: EdgeInsets.only(bottom: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
